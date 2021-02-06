@@ -3,19 +3,19 @@ from bs4 import BeautifulSoup
 
 response = requests.get('https://live-tennis.eu/en/wta-live-ranking')
 
-print("ステータスコード：{0}".format(response.status_code))
+print('ステータスコード：{0}'.format(response.status_code))
 
 # HTMLからデータを引き出す。content を渡した方が文字化けする可能性を減らせる
 data = BeautifulSoup(response.content, 'lxml')
 
 print('ページタイトル：{0}'.format(data.title.text))
 
-data_lists = data.select("tbody > tr > td")
+data_lists = data.select('tbody > tr > td')
 
-print("データの個数{0}".format(len(data_lists)))
+print('データの個数{0}'.format(len(data_lists)))
 
-for li in data_lists:
-    print("li: ", li.string)
+for data_list in data_lists:
+    print('data:{0}'.format(data_list.string))
 
 
 # data.title.text #タイトルタグの中身のみを出力する
